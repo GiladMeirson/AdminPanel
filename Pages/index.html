@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin-Panel</title>
+
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script
+            src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+        <!--**** Remember to add the database script ***-->
+        <script
+            src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+        <script src="../JS/config.js"></script>
+        <script src="../JS/index.js"></script>
+        <link rel="stylesheet" href="../CSS/index.css">
+
+    </head>
+    <body onload="init()">
+
+        <div id="container">
+            <header id="header">
+                <div id="headerWrap">
+                    <h1>Admin-Panel</h1>
+                </div>
+                <div id="navbar">
+                    <a onclick="ShowInsertContainer()">insert new Questin</a>
+                    <a onclick="ShowDeleteContainer()">delete Questin</a>
+                    <a onclick="ShowDisplayContainer()">Show Questin</a>
+                </div>
+            </header>
+
+
+            <!-- DIVS SHOW AND HIDE -->
+
+            <div id="insertContainer">
+                <div id="insertWraper">
+                    <div id="Tab1">
+                        <p>Insert question</p>
+                        <input type="text" name="quest" id="questIN">
+                        <p>Insert correct answer</p>
+                        <input type="text" name="quest" id="answerIN">
+                        <p>Insert incorrect answer A</p>
+                        <input type="text" name="quest" id="ansAIN">
+                        <p>Insert incorrect answer B</p>
+                        <input type="text" name="quest" id="ansBIN">
+                        <p>Insert incorrect answer C</p>
+                        <input type="text" name="quest" id="ansCIN">
+                    </div>
+                    <div id="Tab2">
+
+                        <p>insert level Refrence</p>
+                        <p>Season ?</p>
+                        <select name="SeasonIN" id="SeasonIN">
+                            <option value="0">G</option>
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+
+                        </select>
+                        <p>Episode ?</p>
+                        <select name="EpisodeIN" id="EpisodeIN">
+                            <option value="0">G</option>
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+
+                        </select>
+
+                        <div id="Tab21">
+                            <p>insert level diffculty</p>
+                            <select name="levelIN" id="levelIN">
+                                <option value="1">Easy</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Hard</option>
+                                <option value="4">Legendary</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <button onclick="InsertQuestion()">Submit</button>
+
+            </div>
+
+
+            <div id="deleteContainer">
+                <div id="deletewrap">
+                    <p>Insert Id of question</p>
+                    <input min="1" type="number" name="IdQuest" id="IdQuestIN">
+                    <button onclick="DeleteQuest()">Delete This</button>
+                </div>
+            </div>
+
+            <div id="DisplayContainer">
+                <div id="displayWrap">
+
+
+                    <div id="Tab222">
+                        <button onclick="CallToRenderAll()">Show All Question</button>
+                    </div>
+
+
+
+                    <div id="Tab111">
+                        <p>insert id Question</p>
+                        <input type="number" name="idQuetsta" id="idQuestAIN">
+                        <button onclick="RenderOneQuest()">Show Question</button>
+                    </div>
+
+
+
+                </div>
+
+                <div id="PHwrper">
+                    <div id="QuestPH">
+
+
+                        <!-- <div id="" class="QuestCard">
+                            <p>Body:XXXXXXXXXXXXXXXX</p>
+                            <p>Correct Answer:XXXXXXXXXXXXXXXX</p>
+                            <p>Answer B:XXXXXXXXXXXXXXXX</p>
+                            <p>Answer C:XXXXXXXXXXXXXXXX</p>
+                            <p>Answer D:XXXXXXXXXXXXXXXX</p>
+                            <p>Id: XXXX ||| Level: XXX ||| Refrence: Sx Ey</p>
+
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="Validation">
+                <div id="ValidWraper">
+                    <p>Insert Admin Password</p>
+                    <input type="password" name="Pass" id="AdminPassIn">
+                </div>
+            </div>
+
+            <!-- DIVS SHOW AND HIDE -->
+
+        </div>
+    </body>
+</html>
